@@ -1,22 +1,16 @@
-# Arc Play Games
+# Arc Play Games — Premium V2
 
-A responsive, premium/futuristic one-page GameFi landing page for **Arc Play Games**.
+Premium/futuristic GameFi landing page concept for Arc Play Games.
 
-## Included
-- `$ARCPLAY IS COMING` top bar
-- User-supplied Arc Play logo, banner and 10-second preview video
-- Responsive mobile/desktop design
-- X link: https://x.com/ArcPlayGames
-- Functional local demo mini-game (ARCPLAY Points)
-- Browser wallet connection UI (no transaction signing, no funds requested)
-- GameFi loop + roadmap
-- Arc-native positioning without claiming that a production token/contracts are live
+## V2
+- Full-screen logo intro with a magic/spark dissolve transition.
+- Removed the previous tap-to-earn mini-game.
+- Added 3 numbered original game concepts: 01 / 02 / 03.
+- Added PLAY TO EARN $USDC section.
+- Added cinematic supplied video section.
+- Kept $ARCPLAY IS COMING at the very top.
+- X links point to https://x.com/ArcPlayGames.
+- Responsive mobile/desktop design.
 
-## Run locally
-Open `index.html` in a browser, or use any static web server.
-
-## Deploy
-Upload the entire folder to Netlify, Vercel, GitHub Pages, Cloudflare Pages, or another static hosting provider.
-
-## Important
-The mini-game rewards are demo points stored in the browser. Production tokenomics, smart contracts, wallet network configuration, security review, and legal/compliance work still need to be implemented before using real assets or calling anything live.
+## Note
+Game concepts and $USDC reward language are presented as a project concept. No live token claim or production reward contract is implemented.

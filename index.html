@@ -1,83 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arc Play Games — Sci-Fi Racing Evolved</title>
-  <meta name="description" content="Arc Play Games. Sci-fi racing on the Arc Network. $ARCPLAY is coming." />
-  <meta property="og:title" content="Arc Play Games" />
-  <meta property="og:description" content="Sci-Fi Racing Evolved. Unleash the Power. $ARCPLAY is coming." />
-  <meta property="og:image" content="assets/theme.jpg" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Arc Play Games — GameFi on Arc</title>
+  <meta name="description" content="Arc Play Games — a premium GameFi experience built for the Arc Network.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#05020b;--purple:#9b5cff;--violet:#6f36ff;--cyan:#3cecff;--text:#fff;--muted:#c9c2d8;--glass:rgba(11,5,24,.62);--line:rgba(181,121,255,.25)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-weight:600}
+    .video-bg,.video-bg:after{position:fixed;inset:0;z-index:-5}.video-bg{overflow:hidden;background:#05020b}
+    .video-blur,.video-main{position:absolute;width:100%;height:100%;inset:0}
+    .video-blur{object-fit:cover;filter:blur(28px) saturate(1.35) brightness(.48);transform:scale(1.08);opacity:.95}
+    .video-main{object-fit:contain;filter:saturate(1.15) brightness(.8);background:transparent}
+    .video-bg:after{content:"";z-index:2;background:radial-gradient(circle at 50% 44%,transparent 0,rgba(3,0,10,.25) 36%,rgba(3,0,10,.86) 100%),linear-gradient(180deg,rgba(5,1,12,.5),rgba(5,1,12,.88))}
+    .orb{position:fixed;border-radius:50%;filter:blur(80px);opacity:.28;z-index:-2;pointer-events:none}.orb.a{width:300px;height:300px;background:#7b2cff;top:8%;left:-90px}.orb.b{width:360px;height:360px;background:#d32cff;right:-120px;bottom:10%}
+    nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:18px 5vw;background:linear-gradient(180deg,rgba(4,1,9,.82),transparent);backdrop-filter:blur(7px)}
+    .brand{display:flex;align-items:center;gap:12px;font-family:"Space Grotesk";font-weight:800;letter-spacing:.2px}.brand-mark{width:38px;height:38px;border:1px solid rgba(203,159,255,.55);border-radius:12px;display:grid;place-items:center;background:rgba(125,59,255,.14);box-shadow:0 0 28px rgba(142,70,255,.32)}
+    .brand-mark:before{content:"A";font-size:21px;font-weight:900;color:#d9c1ff;text-shadow:0 0 18px #9d59ff}.brand span{font-size:16px}.navlinks{display:flex;gap:8px;align-items:center}.navlinks a{color:#eee;text-decoration:none;padding:10px 14px;border-radius:12px;font-size:13px;font-weight:800}.navlinks a:hover{background:rgba(255,255,255,.08)}
+    .xbtn,.walletbtn{border:1px solid rgba(207,158,255,.42);background:linear-gradient(135deg,rgba(144,73,255,.28),rgba(77,34,148,.3));color:#fff;border-radius:13px;padding:11px 16px;text-decoration:none;font-weight:900;box-shadow:0 0 26px rgba(128,54,255,.18);cursor:pointer}
+    .walletbtn{display:inline-flex;align-items:center;gap:8px}.walletbtn.connected{border-color:rgba(60,236,255,.5);box-shadow:0 0 26px rgba(60,236,255,.16)}
+    .hero{min-height:100vh;display:grid;place-items:center;padding:130px 6vw 80px;text-align:center}.hero-inner{max-width:980px}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:rgba(114,53,216,.14);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#e6d8ff;box-shadow:0 0 30px rgba(133,59,255,.15)}
+    .dot{width:7px;height:7px;border-radius:50%;background:#54f6c7;box-shadow:0 0 13px #54f6c7}.hero h1{font-family:"Space Grotesk";font-size:clamp(54px,10vw,120px);line-height:.86;margin:26px 0 20px;letter-spacing:-.06em;text-shadow:0 0 35px rgba(152,77,255,.35)}
+    .hero h1 .grad{background:linear-gradient(90deg,#fff 15%,#d4b7ff 45%,#9c5cff 70%,#6df3ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:790px;margin:0 auto;color:#ddd5e9;font-size:clamp(15px,2vw,19px);line-height:1.7;font-weight:700}
+    .hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px}.primary,.secondary{padding:15px 21px;border-radius:15px;text-decoration:none;font-weight:900;font-size:14px}.primary{color:white;background:linear-gradient(135deg,#a75cff,#6634ff);box-shadow:0 12px 42px rgba(125,50,255,.34)}.secondary{color:#fff;border:1px solid var(--line);background:rgba(255,255,255,.06)}
+    section{padding:90px 6vw;position:relative}.container{max-width:1100px;margin:auto}.section-title{text-align:center;font-family:"Space Grotesk";font-size:clamp(34px,5vw,58px);margin:0 0 14px}.section-sub{text-align:center;color:var(--muted);max-width:720px;margin:0 auto 42px;line-height:1.7;font-weight:700}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:27px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,rgba(24,10,44,.78),rgba(7,3,17,.72));backdrop-filter:blur(18px);box-shadow:inset 0 1px rgba(255,255,255,.07),0 22px 70px rgba(0,0,0,.24)}.icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:rgba(157,84,255,.16);border:1px solid rgba(186,126,255,.32);font-size:21px;margin-bottom:18px}.card h3{margin:0 0 9px;font-family:"Space Grotesk";font-size:20px}.card p{margin:0;color:#cfc7da;line-height:1.7;font-size:14px;font-weight:700}
+    .submit-wrap{max-width:760px;margin:auto}.form-card{padding:30px;border-radius:28px;border:1px solid rgba(192,132,255,.35);background:rgba(11,5,25,.78);backdrop-filter:blur(20px);box-shadow:0 25px 90px rgba(0,0,0,.36)}label{display:block;font-size:13px;margin:0 0 8px;color:#eee;font-weight:900}.field{width:100%;padding:15px 16px;border-radius:14px;border:1px solid rgba(201,156,255,.24);background:rgba(255,255,255,.055);color:#fff;outline:none;font:inherit;font-size:14px;font-weight:700}.field:focus{border-color:#a66cff;box-shadow:0 0 0 4px rgba(145,73,255,.11)}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.form-actions{display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap}.status{font-size:12px;color:#bdb2cf}.check{display:flex;gap:10px;align-items:flex-start;margin-top:15px;color:#bdb2cf;font-size:12px;line-height:1.5}.check input{accent-color:#8d52ff;margin-top:2px}
+    .social{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 26px;border-radius:22px;border:1px solid var(--line);background:rgba(12,5,25,.7);backdrop-filter:blur(18px)}.social strong{font-family:"Space Grotesk";font-size:20px}.social small{display:block;color:#bfb5cd;margin-top:5px;font-weight:700}.social a{white-space:nowrap}
+    footer{padding:42px 6vw 60px;text-align:center;color:#9e94ad;font-size:12px;font-weight:700}.admin-link{color:#b99bff;text-decoration:none}
+    .toast{position:fixed;right:18px;bottom:18px;z-index:50;max-width:340px;padding:14px 16px;border-radius:14px;background:rgba(17,7,33,.95);border:1px solid rgba(190,133,255,.4);box-shadow:0 15px 50px rgba(0,0,0,.4);display:none;font-size:13px;font-weight:800}
+    @media(max-width:800px){.navlinks a:not(.xbtn),.walletbtn{display:none}.grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}.hero{padding-top:110px}.social{flex-direction:column;align-items:flex-start}.video-main{object-fit:contain}.hero h1{font-size:clamp(52px,16vw,86px)}}
+  </style>
 </head>
 <body>
-  <div class="scan" aria-hidden="true"></div>
+  <div class="video-bg" aria-hidden="true">
+    <video class="video-blur" autoplay muted loop playsinline poster="assets/arc-play-logo.jpg"><source src="assets/arc-play-bg.mp4" type="video/mp4"></video>
+    <video class="video-main" autoplay muted loop playsinline poster="assets/arc-play-logo.jpg"><source src="assets/arc-play-bg.mp4" type="video/mp4"></video>
+  </div>
+  <div class="orb a"></div><div class="orb b"></div>
 
-  <header class="nav">
-    <a class="brand" href="#top">
-      <img src="assets/logo.jpg" alt="Arc Play Games" />
-      <span>ARC PLAY GAMES</span>
-    </a>
-    <nav>
-      <a href="#race">Race</a>
-      <a href="#token">$ARCPLAY</a>
-      <a href="https://x.com/ArcPlayGames" target="_blank" rel="noreferrer">@ArcPlayGames</a>
-    </nav>
-  </header>
+  <nav>
+    <a class="brand" href="#"><span class="brand-mark"></span><span>ARC PLAY GAMES</span></a>
+    <div class="navlinks">
+      <a href="#ecosystem">Ecosystem</a><a href="#community">Community</a>
+      <a class="xbtn" href="https://x.com/ArcPlayGames" target="_blank" rel="noopener">𝕏 Follow</a>
+      <button id="walletBtn" class="walletbtn" type="button">◈ Connect Wallet</button>
+    </div>
+  </nav>
 
-  <main id="top">
+  <main>
     <section class="hero">
-      <video class="vid" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
-        <source src="assets/hero.mp4" type="video/mp4" />
-      </video>
-      <div class="art" style="background-image:url('assets/theme.jpg')"></div>
-      <div class="mist"></div>
-      <div class="copy">
-        <p class="kicker">On Arc Network</p>
-        <h1>Sci-Fi Racing<br />Evolved.</h1>
-        <p class="tag">Unleash the Power</p>
-        <p class="lede">Neon circuits. Anti-grav lanes. One house for onchain speed.</p>
-        <p class="coming">$ARCPLAY is coming.</p>
-        <div class="row">
-          <a class="btn" href="#race">Enter the grid</a>
-          <a class="btn ghost" href="https://x.com/ArcPlayGames" target="_blank" rel="noreferrer">@ArcPlayGames</a>
+      <div class="hero-inner">
+        <div class="eyebrow"><span class="dot"></span> Building on Arc Network</div>
+        <h1>PLAY. <span class="grad">OWN.</span><br>EVOLVE.</h1>
+        <p><b>Arc Play Games</b> is building toward becoming one of the biggest GameFi ecosystems on the Arc Network — bringing games, digital ownership and on-chain experiences together in one premium destination.</p>
+        <div class="hero-actions">
+          <a class="primary" href="#join">Join the Arc Play Community</a>
+          <a class="secondary" href="https://x.com/ArcPlayGames" target="_blank" rel="noopener">𝕏 Follow Arc Play Games</a>
         </div>
       </div>
     </section>
 
-    <section id="race" class="split">
-      <img class="poster" src="assets/theme.jpg" alt="Arc Play Games sci-fi racing key art" />
-      <div>
-        <p class="kicker">Featured title</p>
-        <h2>Circuit Night</h2>
-        <p>A vertical city. A living track. Craft that burn magenta through the dark. This is the first room — racing built for Arc’s sub-second close.</p>
-        <ul>
-          <li>Anti-grav sprint lanes</li>
-          <li>Night circuit over the skyline</li>
-          <li>Settles on Arc Network</li>
-        </ul>
-        <p class="soon">Coming to the grid.</p>
+    <section id="ecosystem">
+      <div class="container">
+        <h2 class="section-title">Built for the next era of GameFi</h2>
+        <p class="section-sub">A cinematic community-first landing experience designed around the speed, stability and EVM compatibility of Arc.</p>
+        <div class="grid">
+          <article class="card"><div class="icon">✦</div><h3>Arc-native vision</h3><p>Designed around Arc Network and its EVM-compatible environment, with a product direction focused on on-chain gaming.</p></article>
+          <article class="card"><div class="icon">◈</div><h3>Player ownership</h3><p>Prepare for a future where player identities, rewards and digital assets can become part of a transparent on-chain ecosystem.</p></article>
+          <article class="card"><div class="icon">⚡</div><h3>Premium experience</h3><p>Fast, responsive and cinematic UI with a mobile-first layout, wallet onboarding and community growth flows.</p></article>
+        </div>
       </div>
     </section>
 
-    <section id="token" class="token">
-      <img src="assets/logo.jpg" alt="" />
-      <p class="kicker">Token</p>
-      <h2>$ARCPLAY is coming.</h2>
-      <p>Not live. No sale is open. First signal drops on X.</p>
-      <a class="btn" href="https://x.com/ArcPlayGames" target="_blank" rel="noreferrer">Follow @ArcPlayGames</a>
+    <section id="join">
+      <div class="container submit-wrap">
+        <h2 class="section-title">Join the inner circle</h2>
+        <p class="section-sub">Follow <b>@ArcPlayGames</b> on X, then submit your X username below. Your entry is saved locally in the demo and can be connected to a Google Sheet for permanent collection.</p>
+        <div class="form-card">
+          <form id="joinForm">
+            <div class="row">
+              <div><label for="username">X Username</label><input class="field" id="username" name="username" required placeholder="@yourusername" autocomplete="off"></div>
+              <div><label for="wallet">Wallet (optional)</label><input class="field" id="wallet" name="wallet" placeholder="0x..." autocomplete="off"></div>
+            </div>
+            <label class="check"><input id="followed" type="checkbox" required><span>I have followed <b>@ArcPlayGames</b> on X.</span></label>
+            <div class="form-actions"><button class="primary" type="submit">Submit Username →</button><span class="status" id="formStatus">Your demo entry stays on this device until a backend is configured.</span></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="community">
+      <div class="container">
+        <div class="social">
+          <div><strong>Arc Play Games on X</strong><small>Announcements, builds, community drops and launch updates.</small></div>
+          <a class="xbtn" href="https://x.com/ArcPlayGames" target="_blank" rel="noopener">𝕏 @ArcPlayGames ↗</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <img src="assets/logo.jpg" alt="" />
-    <p>Independent studio. On Arc Network. Not Circle. Not Arc Games the publisher.</p>
-    <a href="https://x.com/ArcPlayGames" target="_blank" rel="noreferrer">@ArcPlayGames</a>
-  </footer>
-  <script src="js/main.js"></script>
+  <footer>© 2026 Arc Play Games · Built for the Arc Network · <a class="admin-link" href="admin.html">Local Admin View</a></footer>
+  <div class="toast" id="toast"></div>
+
+<script>
+const CONFIG = {
+  // Paste your deployed Google Apps Script Web App URL here to store submissions in Google Sheets.
+  // Example: "https://script.google.com/macros/s/XXXX/exec"
+  submissionEndpoint: ""
+};
+
+const walletBtn = document.getElementById("walletBtn");
+const toast = document.getElementById("toast");
+function showToast(msg){toast.textContent=msg;toast.style.display="block";setTimeout(()=>toast.style.display="none",3600)}
+
+async function connectWallet(){
+  if(!window.ethereum){ showToast("No EVM wallet detected. Open this site in MetaMask or another injected wallet."); return; }
+  try{
+    const accounts = await window.ethereum.request({method:"eth_requestAccounts"});
+    const address = accounts[0];
+    try{
+      await window.ethereum.request({method:"wallet_switchEthereumChain",params:[{chainId:"0x13b2"}]});
+    }catch(e){
+      if(e.code===4902){
+        await window.ethereum.request({method:"wallet_addEthereumChain",params:[{
+          chainId:"0x13b2",chainName:"Arc",nativeCurrency:{name:"USD Coin",symbol:"USDC",decimals:18},
+          rpcUrls:["https://rpc.mainnet.arc.io"],blockExplorerUrls:["https://explorer.arc.io"]
+        }]});
+      }
+    }
+    walletBtn.classList.add("connected");
+    walletBtn.textContent = address.slice(0,6)+"…"+address.slice(-4);
+    document.getElementById("wallet").value=address;
+    showToast("Wallet connected to Arc.");
+  }catch(err){ showToast("Wallet connection was cancelled or unavailable."); }
+}
+walletBtn.addEventListener("click",connectWallet);
+
+document.getElementById("joinForm").addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  const username = document.getElementById("username").value.trim().replace(/^@/,"");
+  const wallet = document.getElementById("wallet").value.trim();
+  if(!username) return;
+  const entry={username:"@"+username,wallet,createdAt:new Date().toISOString()};
+  const saved=JSON.parse(localStorage.getItem("arcPlaySubmissions")||"[]");
+  saved.push(entry); localStorage.setItem("arcPlaySubmissions",JSON.stringify(saved));
+  if(CONFIG.submissionEndpoint){
+    try{
+      await fetch(CONFIG.submissionEndpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(entry)});
+      document.getElementById("formStatus").textContent="Submitted successfully.";
+    }catch(err){ document.getElementById("formStatus").textContent="Saved locally; backend request could not be confirmed."; }
+  }else{
+    document.getElementById("formStatus").textContent="Saved on this device. Connect a backend in CONFIG to collect entries remotely.";
+  }
+  e.target.reset();
+  showToast("Welcome to Arc Play Games. Your username was submitted.");
+});
+</script>
 </body>
 </html>

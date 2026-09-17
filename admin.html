@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Arc Play Games — Local Admin</title>
+<style>
+body{margin:0;background:#07030d;color:#fff;font-family:Inter,Arial,sans-serif;padding:32px}main{max-width:1000px;margin:auto}h1{font-size:34px}p{color:#bdb4ca}.bar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}button,a{padding:12px 16px;border-radius:12px;border:1px solid #6f45a5;background:#180c2c;color:#fff;text-decoration:none;font-weight:800;cursor:pointer}table{width:100%;border-collapse:collapse;background:#0e0718;border:1px solid #34204e;border-radius:16px;overflow:hidden}th,td{padding:13px;border-bottom:1px solid #261737;text-align:left;font-size:13px}th{color:#caa9ff}code{color:#d9c3ff}
+</style></head><body><main><h1>Arc Play Games — Submissions</h1><p>This local admin page reads entries saved by the landing page in the <code>arcPlaySubmissions</code> browser storage. For permanent remote collection, connect the Google Apps Script endpoint described in README.md.</p>
+<div class="bar"><button onclick="load()">↻ Refresh</button><button onclick="downloadCSV()">↓ Export CSV</button><button onclick="clearAll()">Clear local entries</button><a href="index.html">← Back to site</a></div>
+<div id="out"></div></main>
+<script>
+function get(){return JSON.parse(localStorage.getItem("arcPlaySubmissions")||"[]")}
+function load(){const a=get();if(!a.length){out.innerHTML="<p>No local submissions yet.</p>";return}out.innerHTML="<table><thead><tr><th>#</th><th>X Username</th><th>Wallet</th><th>Submitted</th></tr></thead><tbody>"+a.map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.username)}</td><td>${esc(x.wallet||"—")}</td><td>${new Date(x.createdAt).toLocaleString()}</td></tr>`).join("")+"</tbody></table>"}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function downloadCSV(){const a=get();if(!a.length)return alert("No entries.");const rows=[["X Username","Wallet","Submitted"],...a.map(x=>[x.username,x.wallet,x.createdAt])];const csv=rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(",")).join("\\n");const b=new Blob([csv],{type:"text/csv"}),u=URL.createObjectURL(b),aEl=document.createElement("a");aEl.href=u;aEl.download="arc-play-submissions.csv";aEl.click();URL.revokeObjectURL(u)}
+function clearAll(){if(confirm("Delete all local submissions from this browser?")){localStorage.removeItem("arcPlaySubmissions");load()}}
+load();
+</script></body></html>

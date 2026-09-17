@@ -1,24 +1,61 @@
-# Arc Play Games
+# Arc Play Games — Premium Website
 
-Static site for **Arc Play Games** — sci-fi racing on Arc Network.
+This package contains the complete landing-page source for **Arc Play Games**.
 
-## Live on GitHub Pages
+## Included
 
-1. Create a repo (example: `ArcPlayGames`).
-2. Upload this whole folder (`index.html`, `css`, `js`, `assets`).
-3. Repo → **Settings** → **Pages**.
-4. Source: **Deploy from a branch**.
-5. Branch: `main` / folder: `/ (root)`.
-6. Save. Site URL: `https://YOUR-USERNAME.github.io/REPO-NAME/`
+- `index.html` — premium purple GameFi landing page.
+- `admin.html` — local submission viewer + CSV export.
+- `google-apps-script.gs` — optional Google Sheets backend.
+- `assets/arc-play-bg.mp4` — your uploaded video used as the cinematic background.
+- `assets/arc-play-logo.jpg` — your uploaded logo/poster.
 
-If the repo name is `YOUR-USERNAME.github.io`, the site opens at the root domain.
+## Important background-video behavior
 
-## Local preview
+The uploaded portrait video is used in two layers:
+1. a blurred, cover-filled layer so the entire browser is visually filled;
+2. a clean `contain` layer so **the original video itself is never cropped**.
 
-Open `index.html` in a browser, or:
+The video autoplays muted and loops. Browsers generally require muted autoplay for reliable automatic playback.
 
-```bash
-python3 -m http.server 8080
-```
+## Wallet connection
 
-Then visit `http://localhost:8080`.
+The Connect Wallet button uses the browser's injected EVM wallet (`window.ethereum`) and requests/switches to Arc mainnet (chain ID `5042`, hex `0x13b2`). It uses:
+- RPC: `https://rpc.mainnet.arc.io`
+- Explorer: `https://explorer.arc.io`
+
+Test the wallet flow before accepting real funds or signing transactions. The website does **not** request private keys.
+
+## X username submissions — easiest permanent setup
+
+The front-end saves submissions locally immediately. To collect them from everyone into one place:
+
+1. Create a Google Sheet.
+2. Open **Extensions → Apps Script**.
+3. Paste `google-apps-script.gs`.
+4. Deploy it as a **Web app**:
+   - Execute as: **Me**
+   - Who has access: **Anyone**
+5. Copy the resulting `/exec` URL.
+6. Open `index.html`.
+7. Find:
+   `submissionEndpoint: ""`
+8. Replace it with your Web App URL:
+   `submissionEndpoint: "YOUR_GOOGLE_APPS_SCRIPT_EXEC_URL"`
+9. Re-upload/redeploy the website.
+
+After that, every submitted X username is appended to your Google Sheet with timestamp and wallet address (if supplied). That Google Sheet becomes your simple admin dashboard.
+
+### Local demo
+
+If you don't configure the backend, users' submissions are stored only in that browser/device. Open `admin.html` on the same browser to view and export them.
+
+## Deployment
+
+You can upload the whole folder to any static host such as GitHub Pages, Cloudflare Pages, Netlify, Vercel, or your own hosting.
+
+## Notes
+
+- The copy says Arc Play Games is **building toward becoming** a major GameFi ecosystem; it is promotional positioning, not a guarantee.
+- The page currently has no token-sale, deposit, or transaction functionality.
+- Before launch, add your official terms/privacy links if you collect user data.
